@@ -142,6 +142,11 @@
             color: var(--dark-color);
         }
 
+        .logo img {
+            max-height: 80px;
+            width: auto;
+        }
+
         .nav-links {
             display: flex;
             align-items: center;
@@ -207,10 +212,12 @@
         /* Hero Banner */
         .hero-banner {
             margin-top: 70px; /* Account for fixed navbar */
-            height: 600px;
-            background-image: url('/images/banner.png'); /* Replace with your image path */
+            height: 90vh;
+            min-height: 500px;
+            background-image: url('./images/banner.png');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -226,11 +233,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("images/banner.png");
-background-size: cover;       /* Makes the image cover the full screen */
-  background-position: center;  /* Centers the image */
-  background-repeat: no-repeat; /* Prevents tiling */
-  height: 90vh; 
+            background-image: url('./images/banner.png');
+                        background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-content {
@@ -241,12 +250,12 @@ background-size: cover;       /* Makes the image cover the full screen */
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             margin-bottom: 20px;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             margin-bottom: 30px;
         }
 
@@ -294,18 +303,21 @@ background-size: cover;       /* Makes the image cover the full screen */
         .project-info h4 {
             margin-bottom: 10px;
             color: var(--dark-color);
+            font-size: 1.2rem;
         }
 
         .project-info p {
             margin-bottom: 15px;
             color: var(--text-light);
             text-align: justify;
+            font-size: 0.95rem;
         }
 
         .project-link {
             display: inline-block;
             color: var(--primary-color);
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .project-link:hover {
@@ -346,6 +358,7 @@ background-size: cover;       /* Makes the image cover the full screen */
         .post-content h3 {
             margin-bottom: 10px;
             color: var(--dark-color);
+            font-size: 1.3rem;
         }
 
         .post-date {
@@ -356,11 +369,13 @@ background-size: cover;       /* Makes the image cover the full screen */
 
         .post-excerpt {
             margin-bottom: 15px;
+            font-size: 0.95rem;
         }
 
         .read-more {
             color: var(--primary-color);
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .read-more:hover {
@@ -389,6 +404,10 @@ background-size: cover;       /* Makes the image cover the full screen */
         .info-item i {
             font-size: 1.2rem;
             color: var(--primary-color);
+        }
+
+        .info-item p {
+            font-size: 0.95rem;
         }
 
         .social-links {
@@ -426,6 +445,7 @@ background-size: cover;       /* Makes the image cover the full screen */
             border-radius: 5px;
             font-family: inherit;
             transition: var(--transition);
+            font-size: 0.95rem;
         }
 
         .contact-form input:focus,
@@ -446,12 +466,32 @@ background-size: cover;       /* Makes the image cover the full screen */
             color: var(--white);
             text-align: center;
             padding: 20px 0;
+            font-size: 0.95rem;
         }
 
-        /* Responsive Design */
+        /* Responsive Design Improvements */
+        @media (max-width: 1200px) {
+            .container {
+                width: 95%;
+            }
+        }
+
         @media (max-width: 992px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+            
+            .project-category {
+                font-size: 1.8rem;
             }
         }
 
@@ -490,6 +530,7 @@ background-size: cover;       /* Makes the image cover the full screen */
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.3s ease;
+                background: rgba(0, 0, 0, 0.03);
             }
             
             .dropdown.active .dropdown-menu {
@@ -501,11 +542,16 @@ background-size: cover;       /* Makes the image cover the full screen */
             }
 
             .hero-banner {
-                height: 400px;
-            }
+        height: 50vh;
+        min-height: 250px;
+    }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .projects-grid, .blog-posts {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .contact-content {
+                gap: 30px;
             }
         }
 
@@ -513,17 +559,73 @@ background-size: cover;       /* Makes the image cover the full screen */
             .section {
                 padding: 60px 0;
             }
-
-            .hero-banner {
-                height: 350px;
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
             }
 
-            .hero-content h1 {
-                font-size: 2.2rem;
+             .hero-banner {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: top center;
+        padding-top: 60%;
+        height: auto;
+    }
+            
+            .project-category {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
             }
-
-            .hero-content p {
-                font-size: 1rem;
+            
+            .projects-grid, .blog-posts {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .project-card img, .post-image img {
+                height: 180px;
+            }
+            
+            .project-info, .post-content {
+                padding: 15px;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo img {
+                max-height: 60px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+             .hero-banner {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: top center;
+        padding-top: 60%;
+        height: auto;
+    }
+            
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .info-item {
+                gap: 10px;
+            }
+            
+            .social-links a {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -532,7 +634,7 @@ background-size: cover;       /* Makes the image cover the full screen */
     <!-- Navigation Menu -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo"><img src="./images/test.png" height="60" width="60"></a>
+            <a href="#" class="logo"><img src="./images/logo.png" alt="Hamidullah Kunarai Logo"></a>
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li class="dropdown">
@@ -556,9 +658,7 @@ background-size: cover;       /* Makes the image cover the full screen */
 
     <!-- Hero Banner -->
     <section id="home" class="hero-banner">
-        <div class="banner-content">
-            
-        </div>
+        
     </section>
 
     <!-- Web Development Section -->
@@ -642,7 +742,7 @@ background-size: cover;       /* Makes the image cover the full screen */
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <img src="images/thumb1.png" alt="Project 1">
+                    <img src="images/thumb1.png" alt="Start Earning with Amazon Thumbnail">
                     <div class="project-info">
                         <h4>Start Earning with Amazon Thumbnail</h4>
                         <p>Now you can start earning with Amazon. Whether you're selling products or using affiliate links, it's a great way to turn your time into income. </p>
@@ -651,10 +751,10 @@ background-size: cover;       /* Makes the image cover the full screen */
                 </div>
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <img src="images/thumb2.png" alt="Project 1">
+                    <img src="images/thumb2.png" alt="Invest in Real Estate Smartly Thumbnail">
                     <div class="project-info">
                         <h4>Invest in Real Estate Smartly Thumbnail</h4>
-                        <p>Invest in real estate to build long-term wealth and financial stability. It’s one of the most reliable ways to grow your money through passive income and asset appreciation</p>
+                        <p>Invest in real estate to build long-term wealth and financial stability. It's one of the most reliable ways to grow your money through passive income and asset appreciation</p>
                         <a href="https://drive.google.com/file/d/1HsmipldIkr0vTeIyGIhDoqrjoOBuXmIR/view?usp=drive_link" class="project-link">View Project</a>
                     </div>
                 </div>
